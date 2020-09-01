@@ -5,7 +5,6 @@ $(document).ready(function(){
 
     $('#next').click(function(){
         dataCorrente.add(1, 'M');
-        dataCorrente.add(1, 'M');
         $(".month-list li").remove();
         insertDays(dataCorrente);
         insertHolidays(dataCorrente);
