@@ -5,3 +5,7 @@
 h1.month {
     display: inline-block;
 }
+
+li.holiday {
+    color: red;
+}
