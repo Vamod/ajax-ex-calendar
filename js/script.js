@@ -1,15 +1,24 @@
 $(document).ready(function(){
-    var attributo = $('h1').attr('data-this-date', '2018-02-01');
-    console.log(attributo);
-
-    $('#next').click(function(){
-
-    });
-
-
     //data di partenza è il 28-01-01
     // creo oggetto moment con questa data
     var dataCorrente = moment('2018-01-01');
+
+    $('#next').click(function(){
+        dataCorrente.add(1, 'M');
+        dataCorrente.add(1, 'M');
+        $(".month-list li").remove();
+        insertDays(dataCorrente);
+        insertHolidays(dataCorrente);
+    });
+
+    $("#prev").click(function(){
+        dataCorrente.subtract(1, 'M');
+        $(".month-list li").remove();
+        insertDays(dataCorrente);
+        insertHolidays(dataCorrente);
+    });
+
+
 
         insertDays(dataCorrente);
         insertHolidays(dataCorrente);
@@ -26,10 +35,10 @@ function insertHolidays(data){
                 month: data.month()
             },
             success: function(risposta){
-                console.log(risposta.response);
+                // console.log(risposta.response);
                 for(var i = 0; i < risposta.response.length; i++){
                     var listItem = $('li[data-complete-date='+ risposta.response[i].date +']');
-                    console.log(listItem);
+                    // console.log(listItem);
                     listItem.append('-'+ risposta.response[i].name);
                     listItem.addClass('holiday');
                 }
