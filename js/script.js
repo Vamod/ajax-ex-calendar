@@ -4,17 +4,26 @@ $(document).ready(function(){
     var dataCorrente = moment('2018-01-01');
 
     $('#next').click(function(){
+
+        if(dataCorrente.month() == 11){
+            alert('Non puoi proseguire')
+        } else {
         dataCorrente.add(1, 'M');
         $(".month-list li").remove();
         insertDays(dataCorrente);
         insertHolidays(dataCorrente);
+        }
     });
 
     $("#prev").click(function(){
+        if(dataCorrente.month() == 0){
+            alert('Non puoi proseguire');
+        } else {
         dataCorrente.subtract(1, 'M');
         $(".month-list li").remove();
         insertDays(dataCorrente);
         insertHolidays(dataCorrente);
+        }
     });
 
 
